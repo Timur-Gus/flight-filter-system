@@ -17,8 +17,7 @@ public class SegmentDateBeforeDepartureFilter implements FilterRuleImpl {
      */
     @Override
     public boolean filter(Flight flight) {
-        LocalDateTime departureDate = flight.getSegments().get(0).getDepartureDate();
         return flight.getSegments().stream()
-                .allMatch(s -> s.getArrivalDate().isAfter(departureDate));
+                .allMatch(s -> s.getArrivalDate().isAfter(s.getDepartureDate()));
     }
 }
